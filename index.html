@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деловая этика — Презентация</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary: #0B3D5C;
+            --color-primary-light: #14668A;
+            --color-accent: #D4836B;
+            --color-accent-light: #E8A891;
+            --color-teal: #6FA9A0;
+            --color-text: #0B3D5C;
+            --color-text-secondary: #4A6A7A;
+            --color-bg: #FFFFFF;
+            --color-bg-cream: #FFF8E7;
+            --color-bg-beige: #F5EDE0;
+            --color-bg-mint: #C8D8D0;
+            --color-bg-light: #FAF6F0;
+            --color-border: #E2D9CC;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--color-text);
+            background: var(--color-bg);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            background: rgba(250, 246, 240, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            padding: 12px 32px;
+            overflow-x: auto;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0;
+            white-space: nowrap;
+        }
+
+        .nav-subtitle {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+            white-space: nowrap;
+            border-right: 1px solid var(--color-border);
+            padding-right: 24px;
+        }
+
+        .nav-title {
+            display: none;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        .nav-item {
+            margin-bottom: 0;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 8px 14px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            background: var(--color-bg-cream);
+            color: var(--color-text);
+        }
+
+        .nav-link.active {
+            background: var(--color-primary);
+            color: white;
+        }
+
+        .nav-link span {
+            opacity: 0.5;
+            margin-right: 6px;
+        }
+
+        /* Main Content */
+        .main {
+            margin-left: 0;
+            margin-top: 56px;
+            min-height: 100vh;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--color-bg);
+            color: var(--color-text);
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 24px;
+            height: 100%;
+            background: #C0392B;
+            z-index: 5;
+        }
+
+        .hero-left {
+            flex: 1;
+            padding: 40px 60px 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #74ACA3;
+        }
+
+        .hero-right {
+            width: 45%;
+            background: #FDF6E3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 40px 40px 40px 0;
+        }
+
+        .hero-right img {
+            width: 90%;
+            max-width: 450px;
+            border-radius: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--color-bg-cream);
+            color: var(--color-accent);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            font-style: italic;
+            color: #C0392B;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            max-width: 500px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-quote {
+            max-width: 480px;
+            padding: 20px 24px;
+            background: var(--color-bg-cream);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 0 12px 12px 0;
+            font-size: 16px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--color-text-secondary);
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 48px;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hero-meta-label {
+            opacity: 0.6;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero-meta-value {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--color-primary);
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-cream {
+            background: var(--color-bg-cream);
+        }
+
+        .section-mint {
+            background: var(--color-bg-mint);
+        }
+
+        .section-number {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--color-accent);
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--color-primary);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin-bottom: 48px;
+        }
+
+        /* Section with image layout */
+        .section-with-image {
+            display: flex;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .section-image {
+            width: 220px;
+            flex-shrink: 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .section-image img {
+            width: 100%;
+            border-radius: 16px;
+        }
+
+        .section-content {
+            flex: 1;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .cards-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .card {
+            background: var(--color-bg);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid var(--color-border);
+        }
+
+        .section-cream .card {
+            background: white;
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--color-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: white;
+            font-size: 22px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-primary);
+        }
+
+        .card-text {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Two-column layout for section 01 */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0;
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .why-column-header {
+            padding: 16px 24px;
+            font-weight: 700;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 3px solid var(--color-accent);
+        }
+
+        .why-column-header:first-child {
+            border-right: 1px solid var(--color-border);
+            color: var(--color-primary);
+        }
+
+        .why-column-header:last-child {
+            color: var(--color-teal);
+        }
+
+        .why-item {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .why-item:nth-child(odd) {
+            border-right: 1px solid var(--color-border);
+        }
+
+        .why-item h4 {
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--color-primary);
+        }
+
+        .why-item p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        /* Level columns */
+        .levels-section {
+            display: flex;
+            gap: 0;
+            border-top: 3px solid var(--color-accent);
+        }
+
+        .level-column {
+            flex: 1;
+            padding: 24px 28px 28px;
+            border-right: 1px solid var(--color-border);
+        }
+
+        .level-column:last-child {
+            border-right: none;
+        }
+
+        .level-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .level-corporate .level-badge {
+            background: var(--color-accent);
+        }
+
+        .level-professional .level-badge {
+            background: var(--color-teal);
+        }
+
+        .level-individual .level-badge {
+            background: var(--color-primary);
+        }
+
+        .level-list {
+            list-style: none;
+        }
+
+        .level-list li {
+            padding: 6px 0;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Insights List */
+        .insights-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .insight-item {
+            display: flex;
+            gap: 20px;
+            padding: 28px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+            align-items: flex-start;
+        }
+
+        .section-cream .insight-item {
+            background: white;
+        }
+
+        .insight-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        .insight-content h4 {
+            font-weight: 700;
+            font-size: 17px;
+            margin-bottom: 6px;
+            color: var(--color-accent);
+        }
+
+        .insight-content p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Offline rules */
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .rule-card {
+            padding: 28px;
+            background: rgba(255,255,255,0.5);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.8);
+        }
+
+        .rule-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 12px;
+            line-height: 1;
+        }
+
+        .rule-content h4 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--color-primary);
+            font-size: 16px;
+        }
+
+        .rule-content p {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .rule-highlight {
+            grid-column: 2 / 4;
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 12px;
+            padding: 28px;
+        }
+
+        .rule-highlight p {
+            font-size: 18px;
+            color: var(--color-teal);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        /* Online section */
+        .online-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 400px;
+        }
+
+        .online-left {
+            background: var(--color-bg-beige);
+            padding: 60px 40px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .online-left h3 {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .online-right {
+            background: var(--color-bg-cream);
+            padding: 48px 40px;
+        }
+
+        .online-right h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--color-primary);
+        }
+
+        .online-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .online-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        .online-list li .bullet {
+            width: 8px;
+            height: 8px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+
+        /* CTA / Summary Section */
+        .cta-section {
+            background: var(--color-bg);
+            color: var(--color-text);
+            text-align: center;
+            padding: 100px 80px;
+        }
+
+        .cta-title {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 60px;
+            color: var(--color-primary);
+        }
+
+        .cta-levels {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+        }
+
+        .cta-level {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .cta-level-number {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            border: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .cta-level-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 1024px) {
+            .nav {
+                padding: 10px 16px;
+                gap: 12px;
+            }
+
+            .main {
+                margin-left: 0;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-left {
+                padding: 60px 32px;
+            }
+
+            .hero-right {
+                width: 100%;
+                height: 300px;
+            }
+
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section {
+                padding: 48px 32px;
+            }
+
+            .section-with-image {
+                flex-direction: column;
+            }
+
+            .section-image {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .cards-grid-3, .levels-section {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rule-highlight {
+                grid-column: auto;
+            }
+
+            .online-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .why-column-header:first-child {
+                border-right: none;
+            }
+
+            .why-item:nth-child(odd) {
+                border-right: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <nav class="nav">
+        <div class="nav-logo">Деловая этика</div>
+        <div class="nav-subtitle">NOTAMEDIA &middot; February 2026</div>
+
+        <div class="nav-title">Содержание</div>
+        <ul class="nav-list">
+            <li class="nav-item">
+                <a href="#hero" class="nav-link active">
+                    <span>00</span>Введение
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#video" class="nav-link">
+                    <span>01</span>Видеоролик
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#discuss" class="nav-link">
+                    <span>02</span>Что здесь увидели?
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#stats" class="nav-link">
+                    <span>03</span>Статистика
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#market" class="nav-link">
+                    <span>04</span>Кто выигрывает
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#definition" class="nav-link">
+                    <span>05</span>Что такое деловая этика
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#functions" class="nav-link">
+                    <span>06</span>Влияние на компанию
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#threat" class="nav-link">
+                    <span>07</span>Скрытая угроза
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#experience" class="nav-link">
+                    <span>08</span>Мой опыт
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-left">
+                <div style="background: #FFF5E6; border-radius: 50px; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                    <span style="font-size: 15px; font-weight: 600; color: var(--color-accent); letter-spacing: 0.03em;">NOTAMEDIA</span>
+                    <span style="font-size: 15px; color: var(--color-text-secondary);">February 27, 2026</span>
+                </div>
+                <h1 class="hero-title">Деловая этика</h1>
+                <div class="hero-quote">
+                    «Этика — это когда ты выбираешь сделать правильно, даже если никто не увидит. Потому что ты видишь.»
+                </div>
+            </div>
+            <div class="hero-right">
+                <div style="width: 90%; max-width: 450px;">
+                    <img src="slides/page1_img1.jpeg" alt="Деловая этика" style="width: 100%;">
+                    <p style="font-size: 16px; color: var(--color-text-secondary); line-height: 1.6; margin-top: 24px;">Невежливое письмо или перебитая встреча портят впечатление о человеке, даже если он гений.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 01: Видеоролик -->
+        <section class="section" id="video" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--color-bg-cream);">
+            <div class="section-number">01</div>
+            <h2 class="section-title" style="margin-bottom: 40px;">Видеоролик</h2>
+            <div style="width: 100%; max-width: 720px; aspect-ratio: 16/9; background: var(--color-primary); border-radius: 16px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                <div style="text-align: center; color: white;">
+                    <div style="font-size: 64px; margin-bottom: 16px; opacity: 0.8;">&#9654;</div>
+                    <p style="font-size: 18px; opacity: 0.7;">Видео будет добавлено позже</p>
+                    <p style="font-size: 14px; opacity: 0.5; margin-top: 8px;">15–30 сек</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 02: Что здесь увидели? -->
+        <section class="section" id="discuss" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--color-bg);">
+            <h2 style="font-size: 72px; font-weight: 700; color: var(--color-primary); line-height: 1.1; max-width: 800px;">Что здесь увидели?</h2>
+            <p style="font-size: 20px; color: var(--color-text-secondary); margin-top: 32px;">Обсуждение с коллегами</p>
+        </section>
+
+        <!-- Section 03: Статистика -->
+        <section class="section" id="stats" style="background: var(--color-primary); padding: 80px; position: relative; overflow: hidden;">
+            <!-- Декоративные круги -->
+            <div style="position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: rgba(111,169,160,0.15);"></div>
+            <div style="position: absolute; bottom: -60px; left: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(212,131,107,0.1);"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <div style="margin-bottom: 48px;">
+                    <div class="section-number" style="color: var(--color-accent-light);">03</div>
+                    <h2 style="font-size: 48px; font-weight: 700; color: white; line-height: 1.1;">Немного статистики</h2>
+                    <p style="font-size: 17px; color: rgba(255,255,255,0.6); margin-top: 12px; max-width: 700px;">Деловая этика связана с финансовой и операционной устойчивостью</p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;">
+                    <!-- Блок 1: +50% -->
+                    <div style="background: linear-gradient(135deg, var(--color-teal), #5a9a90); border-radius: 20px; padding: 40px; color: white; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+                        <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+                        <p style="font-size: 56px; font-weight: 800; line-height: 1; margin-bottom: 8px;">+50%</p>
+                        <p style="font-size: 17px; font-weight: 600; margin-bottom: 16px; opacity: 0.95;">к показателям роста</p>
+                        <p style="font-size: 14px; opacity: 0.8; line-height: 1.6; margin-bottom: 16px;">Компании с сильной этической культурой демонстрируют на ~50% более высокие показатели по:</p>
+                        <ul style="font-size: 14px; opacity: 0.8; line-height: 1.8; padding-left: 18px; margin-bottom: 16px; flex: 1;">
+                            <li>удовлетворённости клиентов</li>
+                            <li>инновационной активности</li>
+                            <li>конкурентоспособности</li>
+                        </ul>
+                        <p style="font-size: 12px; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px;">Источник: Ethisphere, Deloitte</p>
+                    </div>
+
+                    <!-- Блок 2: +7,8–12,3% -->
+                    <div style="background: linear-gradient(135deg, var(--color-accent), #c06f58); border-radius: 20px; padding: 40px; color: white; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+                        <div style="position: absolute; bottom: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.1);"></div>
+                        <p style="font-size: 46px; font-weight: 800; line-height: 1; margin-bottom: 8px;">+7,8–12,3%</p>
+                        <p style="font-size: 17px; font-weight: 600; margin-bottom: 16px; opacity: 0.95;">к доходности акций</p>
+                        <p style="font-size: 14px; opacity: 0.8; line-height: 1.6; flex: 1;">Компании с высокими рейтингами деловой этики опережают сопоставимый рыночный индекс на 7,8–12,3% за 5 лет.</p>
+                        <p style="font-size: 12px; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px;">Источник: Ethisphere "World's Most Ethical Companies" (сравнение с S&amp;P 500)</p>
+                    </div>
+
+                    <!-- Блок 3: –40–50% -->
+                    <div style="background: linear-gradient(135deg, #2C5364, #203A43); border-radius: 20px; padding: 40px; color: white; position: relative; overflow: hidden; display: flex; flex-direction: column;">
+                        <div style="position: absolute; top: -20px; left: -20px; width: 120px; height: 120px; border-radius: 50%; background: rgba(255,255,255,0.05);"></div>
+                        <p style="font-size: 46px; font-weight: 800; line-height: 1; margin-bottom: 8px;">–40–50%</p>
+                        <p style="font-size: 17px; font-weight: 600; margin-bottom: 16px; opacity: 0.95;">снижение репутационных рисков</p>
+                        <p style="font-size: 14px; opacity: 0.8; line-height: 1.6; flex: 1;">Компании с формализованной этической политикой реже сталкиваются с судебными и репутационными потерями.</p>
+                        <p style="font-size: 12px; opacity: 0.5; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 12px;">Источник: PwC Global Risk Survey</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 04: Кто выигрывает -->
+        <section class="section" id="market" style="background: #FFF8F0; padding: 80px; position: relative; overflow: hidden;">
+            <!-- Картинка в кружке -->
+            <div style="position: absolute; top: 40px; right: 40px; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 4px solid rgba(212,131,107,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+                <img src="slides/partnership.png" alt="Партнёрство" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="position: absolute; bottom: -40px; right: 200px; width: 120px; height: 120px; border-radius: 50%; background: rgba(212,131,107,0.08);"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <div class="section-number" style="color: var(--color-accent);">04</div>
+
+                <!-- Верхняя часть -->
+                <div style="margin-bottom: 48px;">
+                    <h2 style="font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 24px;">В современном рынке выигрывает не самый <span style="color: var(--color-accent); font-style: italic;">громкий</span>,<br>а самый <span style="color: var(--color-accent); font-style: italic;">устойчивый</span>.</h2>
+                    <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 8px;">Устойчивость компании начинается с управляемой деловой культуры.</p>
+                    <p style="font-size: 32px; font-weight: 700; color: var(--color-primary); line-height: 1.2; padding-bottom: 20px; border-bottom: 3px solid var(--color-accent);">Рынок в 2024–2025 стал:</p>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px;">
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">1</div>
+                            <div>
+                                <h4 style="font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Более конкурентный</h4>
+                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Клиенты выбирают не только продукт, но и стиль работы.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">2</div>
+                            <div>
+                                <h4 style="font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Более публичный</h4>
+                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Репутация формируется публично: отзывы, соцсети, профессиональные сообщества.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 16px; align-items: flex-start;">
+                            <div style="width: 40px; height: 40px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">3</div>
+                            <div>
+                                <h4 style="font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Более чувствительный к доверию</h4>
+                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Долгосрочные деньги приходят туда, где соблюдаются договорённости и границы.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Нижняя часть: Выигрывают / Проигрывают -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+                    <!-- Выигрывают -->
+                    <div style="background: white; border-radius: 20px; padding: 40px; border: 2px solid rgba(111,169,160,0.3); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--color-teal), #8ec4bb);"></div>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                            <div style="width: 36px; height: 36px; background: var(--color-teal); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">&#9650;</div>
+                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-teal);">Выигрывают</h3>
+                        </div>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px;">Компании, которые:</p>
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Контролируют стиль деловой коммуникации</p>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Минимизируют репутационные риски</p>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Соблюдают сроки и договорённости</p>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Формируют предсказуемую среду</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Проигрывают -->
+                    <div style="background: white; border-radius: 20px; padding: 40px; border: 2px solid rgba(212,131,107,0.3); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--color-accent), #e09980);"></div>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                            <div style="width: 36px; height: 36px; background: var(--color-accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">&#9660;</div>
+                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-accent);">Проигрывают</h3>
+                        </div>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px;">Компании, где:</p>
+                        <div style="display: flex; flex-direction: column; gap: 14px;">
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Коммуникация эмоциональна и хаотична</p>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Сотрудники публично конфликтуют</p>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Игнорируются границы времени</p>
+                            </div>
+                            <div style="display: flex; gap: 12px; align-items: center;">
+                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Нет единых стандартов общения</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 05: Что такое деловая этика -->
+        <section class="section" id="definition" style="background: var(--color-bg); padding: 80px; position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: -60px; left: -60px; width: 250px; height: 250px; border-radius: 50%; background: rgba(111,169,160,0.06);"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <div class="section-number" style="color: var(--color-accent);">05</div>
+                <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 48px;">Что такое деловая этика?</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start;">
+                    <!-- Левая часть — определение и пункты -->
+                    <div>
+                        <!-- Определение -->
+                        <div style="background: var(--color-bg-cream); border-left: 5px solid var(--color-accent); border-radius: 0 16px 16px 0; padding: 32px 36px; margin-bottom: 36px;">
+                            <p style="font-size: 20px; color: var(--color-primary); line-height: 1.6; font-weight: 500;"><strong>Деловая этика</strong> — это система норм и принципов, которая определяет, как люди взаимодействуют в профессиональной среде: с коллегами, клиентами, партнёрами и руководством.</p>
+                        </div>
+
+                        <p style="font-size: 17px; color: var(--color-text-secondary); margin-bottom: 28px;">Это не просто «быть вежливым». Это осознанный подход к тому, <strong style="color: var(--color-primary);">как мы общаемся, принимаем решения и выстраиваем рабочие отношения</strong>.</p>
+
+                        <!-- Ключевые аспекты -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-teal);"></div>
+                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-teal); margin-bottom: 8px;">Уважение</h4>
+                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">К времени, границам и мнению других людей</p>
+                            </div>
+                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-accent);"></div>
+                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-accent); margin-bottom: 8px;">Ответственность</h4>
+                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">За свои слова, решения и их последствия</p>
+                            </div>
+                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-primary);"></div>
+                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">Честность</h4>
+                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Прозрачность в коммуникации и договорённостях</p>
+                            </div>
+                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
+                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-accent-light);"></div>
+                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-accent); margin-bottom: 8px;">Профессионализм</h4>
+                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Единые стандарты поведения в рабочей среде</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Правая часть — иллюстрация -->
+                    <div style="text-align: center;">
+                        <div style="background: var(--color-bg-cream); border-radius: 20px; padding: 24px; overflow: hidden;">
+                            <img src="slides/ethics_illustration_cropped.png" alt="Деловая этика — фундамент корпоративной культуры" style="width: 100%; border-radius: 12px;">
+                            <p style="font-size: 14px; font-style: italic; color: var(--color-text-secondary); line-height: 1.5; margin-top: 16px; text-align: center;">Деловая этика — это то, как компания ведёт себя, когда становится сложно.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 06: Как деловая этика влияет на компанию -->
+        <section class="section" id="functions" style="background: #EFF3EC; padding: 80px; position: relative; overflow: hidden;">
+            <!-- Декор -->
+            <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; border-radius: 50%; background: rgba(76,175,80,0.07);"></div>
+            <div style="position: absolute; bottom: -30px; left: 100px; width: 140px; height: 140px; border-radius: 50%; background: rgba(255,202,40,0.1);"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <div class="section-number" style="color: #5B8C5A;">06</div>
+                <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 48px;">Как деловая этика влияет на компанию</h2>
+
+                <!-- 3 блока -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px;">
+
+                    <!-- 1. Управляемость -->
+                    <div style="background: white; border-radius: 20px; padding: 36px; border-top: 4px solid #5B8C5A; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div style="width: 36px; height: 36px; background: #5B8C5A; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">1</div>
+                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-primary);">Управляемость</h3>
+                        </div>
+                        <p style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px;">Единые стандарты поведения и коммуникации</p>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; меньше конфликтов</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; быстрее принимаются решения</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; ниже управленческая неопределённость</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Доверие -->
+                    <div style="background: white; border-radius: 20px; padding: 36px; border-top: 4px solid #FFCA28; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div style="width: 36px; height: 36px; background: #FFCA28; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">2</div>
+                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-primary);">Доверие</h3>
+                        </div>
+                        <p style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px;">Уважительное и предсказуемое взаимодействие</p>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; стабильные партнёрства</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; повторные контракты</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; инвестиционная привлекательность</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. Финансовая устойчивость -->
+                    <div style="background: white; border-radius: 20px; padding: 36px; border-top: 4px solid #4A7A48; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                            <div style="width: 36px; height: 36px; background: #4A7A48; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">3</div>
+                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-primary);">Финансовая устойчивость</h3>
+                        </div>
+                        <p style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px;">Контроль рисков и соблюдение договорённостей</p>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; меньше репутационных потерь</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; ниже транзакционные издержки</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; стабильнее прибыль</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Почему это важно сейчас для нас -->
+                <div style="background: white; border-radius: 20px; padding: 40px 44px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); margin-bottom: 24px;">
+                    <h3 style="font-size: 28px; font-weight: 700; color: var(--color-primary); margin-bottom: 28px;">Почему это важно сейчас для нас</h3>
+
+                    <div style="display: flex; flex-direction: column; gap: 0;">
+                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
+                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">1. Мы растём</h4>
+                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Чем больше команда и проектов, тем выше риск размытых стандартов. Этика = единые правила игры.</p>
+                        </div>
+                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
+                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">2. Мы работаем с внешними партнёрами</h4>
+                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Рынок оценивает не только продукт, но и стиль взаимодействия. Один сбой в коммуникации может стоить контракта.</p>
+                        </div>
+                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
+                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">3. Информация стала публичной</h4>
+                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Отзывы, профессиональные сообщества, соцсети — репутация формируется быстро и открыто.</p>
+                        </div>
+                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
+                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">4. Скорость выше, напряжение больше</h4>
+                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">В условиях высокой нагрузки возрастает риск эмоциональных решений и конфликтов. Этика — это стабилизатор.</p>
+                        </div>
+                        <div style="padding: 20px 0;">
+                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">5. Устойчивость важнее «героизма»</h4>
+                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Системность выигрывает у разовых усилий. Нам важна предсказуемость, а не случайные успехи.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Финальная строка -->
+                <div style="background: linear-gradient(135deg, #4A7A48, #5B8C5A); border-radius: 16px; padding: 32px 40px; display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 5px; height: 48px; background: #FFCA28; border-radius: 3px; flex-shrink: 0;"></div>
+                    <p style="font-size: 19px; color: white; line-height: 1.5; font-weight: 500;">Деловая этика — это управляемость поведения, которая напрямую влияет на устойчивость бизнеса.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 07: Скрытая угроза -->
+        <section class="section" id="threat" style="background: var(--color-bg); padding: 80px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(192,57,43,0.05);"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <div class="section-number" style="color: #C0392B;">07</div>
+                <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 16px;">Скрытая угроза: автоматические реакции</h2>
+                <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 48px;">Мы часто не замечаем, как именно общаемся в рабочих ситуациях. В состоянии стресса, спешки или напряжения значительная часть наших реакций становится автоматической.</p>
+
+                <!-- Как это проявляется -->
+                <div style="background: var(--color-bg-cream); border-radius: 20px; padding: 36px; border-left: 5px solid var(--color-accent); margin-bottom: 24px;">
+                    <h3 style="font-size: 24px; font-weight: 700; color: var(--color-primary); margin-bottom: 16px;">Как это проявляется</h3>
+                    <p style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 16px;">Мы можем перебивать, говорить резче, чем планировали, обесценивать идеи, защищаться вместо того, чтобы слушать, переносить личное напряжение в рабочие процессы.</p>
+                    <p style="font-size: 16px; color: var(--color-primary); font-weight: 600;">Это происходит не из злого умысла, а по инерции.</p>
+                </div>
+
+                <!-- Ключевой момент -->
+                <div style="background: var(--color-primary); border-radius: 16px; padding: 32px 40px; display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 5px; height: 48px; background: #C0392B; border-radius: 3px; flex-shrink: 0;"></div>
+                    <div>
+                        <p style="font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Ключевой момент</p>
+                        <p style="font-size: 19px; color: white; line-height: 1.5; font-weight: 500;">Деловая этика начинается с осознанности. Способность замечать свои реакции и управлять ими — часть профессиональной зрелости.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 08: Мой опыт -->
+        <section class="section section-cream" id="experience" style="padding: 80px;">
+            <div class="section-number" style="color: var(--color-accent);">08</div>
+            <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 48px;">Мой опыт: как это проявляется в реальности</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+                <!-- 1. Эмоции в офисе -->
+                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid var(--color-accent); box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">1. Эмоции в офисе</h4>
+                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Сотрудник громко ругается на клиента, пока рядом идёт созвон с этим же заказчиком.</p>
+                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Риск потери доверия и репутации.</p>
+                    <p style="font-size: 13px; color: var(--color-accent); font-weight: 600;">Принцип: контроль эмоций в профессиональной среде.</p>
+                </div>
+
+                <!-- 2. Подрядчик на встрече -->
+                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid var(--color-teal); box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">2. Подрядчик на встрече</h4>
+                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Опоздание, неготовность, хаотичная подача, неформальный тон.</p>
+                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Снижение доверия к человеку и компании.</p>
+                    <p style="font-size: 13px; color: var(--color-teal); font-weight: 600;">Принцип: подготовка и уважение к формату встречи.</p>
+                </div>
+
+                <!-- 3. Сильный кандидат -->
+                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid var(--color-primary); box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">3. Сильный кандидат — слабая подача</h4>
+                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Резюме сильное, самопрезентация неструктурированная.</p>
+                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Потеря впечатления и ценности экспертизы.</p>
+                    <p style="font-size: 13px; color: var(--color-primary); font-weight: 600;">Принцип: профессиональная коммуникация — часть компетенции.</p>
+                </div>
+
+                <!-- 4. Собеседование из кафе -->
+                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid #C0392B; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
+                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">4. Собеседование из кафе</h4>
+                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Шум, плохая связь, отсутствие подготовки.</p>
+                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Снижение доверия и серьёзности намерений.</p>
+                    <p style="font-size: 13px; color: #C0392B; font-weight: 600;">Принцип: уважение к формату онлайн-коммуникации.</p>
+                </div>
+            </div>
+
+            <!-- Закрывающая мысль -->
+            <div style="background: var(--color-primary); border-radius: 16px; padding: 32px 40px; display: flex; align-items: center; gap: 20px;">
+                <div style="width: 5px; height: 48px; background: var(--color-accent); border-radius: 3px; flex-shrink: 0;"></div>
+                <p style="font-size: 19px; color: white; line-height: 1.5; font-weight: 500;">Во всех случаях проблема была не в знаниях, а в качестве деловой коммуникации.</p>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Navigation highlight on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

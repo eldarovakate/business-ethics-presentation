@@ -13,19 +13,20 @@
         }
 
         :root {
-            --color-primary: #0B3D5C;
-            --color-primary-light: #14668A;
-            --color-accent: #D4836B;
-            --color-accent-light: #E8A891;
-            --color-teal: #6FA9A0;
-            --color-text: #0B3D5C;
-            --color-text-secondary: #4A6A7A;
+            --color-primary: #1B5E5E;
+            --color-primary-light: #238A8A;
+            --color-accent: #E8A84B;
+            --color-accent-light: #F0C068;
+            --color-teal: #2A9D8F;
+            --color-text: #1B3A3A;
+            --color-text-secondary: #5A7A7A;
             --color-bg: #FFFFFF;
-            --color-bg-cream: #FFF8E7;
+            --color-bg-cream: #FFF6EA;
             --color-bg-beige: #F5EDE0;
-            --color-bg-mint: #C8D8D0;
+            --color-bg-mint: #D4EDEA;
             --color-bg-light: #FAF6F0;
-            --color-border: #E2D9CC;
+            --color-border: #D4E4E0;
+            --color-coral: #E8956B;
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
@@ -38,6 +39,7 @@
             color: var(--color-text);
             background: var(--color-bg);
             line-height: 1.6;
+            zoom: 1.2;
         }
 
         /* Navigation */
@@ -47,9 +49,9 @@
             left: 0;
             width: 100%;
             height: auto;
-            background: rgba(250, 246, 240, 0.95);
+            background: rgba(27, 94, 94, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
+            border-bottom: none;
             padding: 12px 32px;
             overflow-x: auto;
             z-index: 100;
@@ -61,19 +63,19 @@
         .nav-logo {
             font-size: 18px;
             font-weight: 700;
-            color: var(--color-primary);
+            color: #fff;
             margin-bottom: 0;
             white-space: nowrap;
         }
 
         .nav-subtitle {
             font-size: 12px;
-            color: var(--color-text-secondary);
+            color: rgba(255,255,255,0.6);
             margin-bottom: 0;
             padding-bottom: 0;
             border-bottom: none;
             white-space: nowrap;
-            border-right: 1px solid var(--color-border);
+            border-right: 1px solid rgba(255,255,255,0.2);
             padding-right: 24px;
         }
 
@@ -95,7 +97,7 @@
         .nav-link {
             display: block;
             padding: 8px 14px;
-            color: var(--color-text-secondary);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
             font-size: 13px;
             font-weight: 500;
@@ -105,13 +107,13 @@
         }
 
         .nav-link:hover {
-            background: var(--color-bg-cream);
-            color: var(--color-text);
+            background: rgba(255,255,255,0.15);
+            color: #fff;
         }
 
         .nav-link.active {
-            background: var(--color-primary);
-            color: white;
+            background: var(--color-accent);
+            color: #1B3A3A;
         }
 
         .nav-link span {
@@ -128,94 +130,182 @@
 
         /* Hero Section */
         .hero {
-            background: var(--color-bg);
+            background: #FFF6EA;
             color: var(--color-text);
             padding: 0;
-            min-height: 100vh;
+            min-height: calc(100vh - 200px);
             display: flex;
             position: relative;
             overflow: hidden;
-            border-bottom: 1px solid var(--color-border);
+            border-bottom: none;
         }
 
-        .hero::before {
+        .hero::before { display: none; }
+
+        .hero::after {
             content: '';
             position: absolute;
             top: 0;
             right: 0;
-            width: 24px;
+            width: 72px;
             height: 100%;
-            background: #C0392B;
+            background: #BA4816;
             z-index: 5;
+        }
+
+        .hero-sidebar-text {
+            position: absolute;
+            right: 0; top: 0;
+            width: 72px; height: 100%;
+            z-index: 6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-sidebar-text span {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
         }
 
         .hero-left {
             flex: 1;
-            padding: 40px 60px 80px;
+            padding: 60px 50px 60px 70px;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background: #74ACA3;
+            background: transparent;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-right {
-            width: 45%;
-            background: #FDF6E3;
+            width: 40%;
+            background: transparent;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
-            padding: 40px 40px 40px 0;
+            overflow: visible;
+            padding: 60px 100px 60px 0;
+            z-index: 2;
+        }
+
+        .hero-photo-frame {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .hero-photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 20px; left: 20px;
+            right: -20px; bottom: -20px;
+            background: var(--color-accent);
+            border-radius: 12px;
+            z-index: 0;
         }
 
         .hero-right img {
-            width: 90%;
-            max-width: 450px;
-            border-radius: 0;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
             position: relative;
             z-index: 1;
+            display: block;
         }
 
         .hero-badge {
-            display: inline-block;
-            background: var(--color-bg-cream);
-            color: var(--color-accent);
-            padding: 8px 16px;
-            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: transparent;
+            color: var(--color-text);
+            padding: 0;
             font-size: 14px;
             font-weight: 600;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
+            border: none;
+        }
+
+        .hero-badge-icon {
+            width: 40px; height: 40px;
+            background: var(--color-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: #fff;
+            font-size: 16px;
         }
 
         .hero-title {
-            font-size: 56px;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 32px;
-            font-style: italic;
-            color: #C0392B;
+            font-size: 68px;
+            font-weight: 900;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            font-style: normal;
+            color: var(--color-primary);
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
         }
 
         .hero-subtitle {
-            font-size: 18px;
-            color: var(--color-text-secondary);
-            max-width: 500px;
-            margin-bottom: 40px;
-            line-height: 1.6;
+            font-size: 16px;
+            font-weight: 600;
+            color: #555;
+            max-width: 400px;
+            margin-bottom: 20px;
         }
 
         .hero-quote {
-            max-width: 480px;
-            padding: 20px 24px;
-            background: var(--color-bg-cream);
-            border-left: 4px solid var(--color-accent);
-            border-radius: 0 12px 12px 0;
-            font-size: 16px;
-            font-style: italic;
+            max-width: 440px;
+            padding: 0;
+            background: transparent;
+            border: none;
+            font-size: 14px;
+            line-height: 1.7;
+            color: #888;
+            margin-bottom: 36px;
+        }
+
+        .hero-start-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 28px;
+            border: 2px solid var(--color-primary);
+            background: transparent;
+            color: var(--color-primary);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .hero-start-btn:hover {
+            background: var(--color-primary);
+            color: #fff;
+        }
+
+        .hero-caption {
+            margin-top: 24px;
+            font-size: 14px;
+            color: #888;
             line-height: 1.6;
-            color: var(--color-text-secondary);
+            position: relative;
+            z-index: 1;
+            max-width: 400px;
         }
 
         .hero-meta {
@@ -247,7 +337,7 @@
         /* Sections */
         .section {
             padding: 80px;
-            border-bottom: 1px solid var(--color-border);
+            border-bottom: none;
         }
 
         .section:last-child {
@@ -807,9 +897,9 @@
         <!-- Hero Section -->
         <section class="hero" id="hero">
             <div class="hero-left">
-                <div style="background: #FFF5E6; border-radius: 50px; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
-                    <span style="font-size: 15px; font-weight: 600; color: var(--color-accent); letter-spacing: 0.03em;">NOTAMEDIA</span>
-                    <span style="font-size: 15px; color: var(--color-text-secondary);">February 27, 2026</span>
+                <div style="display: inline-block; background: #D8D2C8; border-radius: 16px; padding: 14px 28px; margin-bottom: 40px;">
+                    <span style="display: block; font-size: 15px; font-weight: 700; color: #BA4816; letter-spacing: 0.06em;">NOTAMEDIA</span>
+                    <span style="display: block; font-size: 13px; color: var(--color-text-secondary); margin-top: 4px;">February 25, 2026</span>
                 </div>
                 <h1 class="hero-title">Деловая этика</h1>
                 <div class="hero-quote">
@@ -825,9 +915,9 @@
         </section>
 
         <!-- Section 01: Видеоролик -->
-        <section class="section" id="video" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--color-bg-cream);">
-            <div class="section-number">01</div>
-            <h2 class="section-title" style="margin-bottom: 40px;">Видеоролик</h2>
+        <section class="section" id="video" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--color-primary);">
+            <div class="section-number" style="color: rgba(255,255,255,0.4);">01</div>
+            <h2 class="section-title" style="margin-bottom: 40px; color: white;">Видеоролик</h2>
             <div style="width: 100%; max-width: 720px; aspect-ratio: 16/9; background: var(--color-primary); border-radius: 16px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
                 <div style="text-align: center; color: white;">
                     <div style="font-size: 64px; margin-bottom: 16px; opacity: 0.8;">&#9654;</div>
@@ -838,9 +928,8 @@
         </section>
 
         <!-- Section 02: Что здесь увидели? -->
-        <section class="section" id="discuss" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: var(--color-bg);">
+        <section class="section" id="discuss" style="min-height: 80vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: ivory;">
             <h2 style="font-size: 72px; font-weight: 700; color: var(--color-primary); line-height: 1.1; max-width: 800px;">Что здесь увидели?</h2>
-            <p style="font-size: 20px; color: var(--color-text-secondary); margin-top: 32px;">Обсуждение с коллегами</p>
         </section>
 
         <!-- Section 03: Статистика -->
@@ -893,101 +982,93 @@
         </section>
 
         <!-- Section 04: Кто выигрывает -->
-        <section class="section" id="market" style="background: #FFF8F0; padding: 80px; position: relative; overflow: hidden;">
-            <!-- Картинка в кружке -->
-            <div style="position: absolute; top: 40px; right: 40px; width: 200px; height: 200px; border-radius: 50%; overflow: hidden; border: 4px solid rgba(212,131,107,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
-                <img src="slides/partnership.png" alt="Партнёрство" style="width: 100%; height: 100%; object-fit: cover;">
-            </div>
-            <div style="position: absolute; bottom: -40px; right: 200px; width: 120px; height: 120px; border-radius: 50%; background: rgba(212,131,107,0.08);"></div>
-
+        <section class="section" id="market" style="background: #FFF8F0; padding: 64px 80px; position: relative; overflow: hidden;">
             <div style="position: relative; z-index: 1;">
-                <div class="section-number" style="color: var(--color-accent);">04</div>
+                <div class="section-number" style="color: #BA4816;">04</div>
 
-                <!-- Верхняя часть -->
-                <div style="margin-bottom: 48px;">
-                    <h2 style="font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 24px;">В современном рынке выигрывает не самый <span style="color: var(--color-accent); font-style: italic;">громкий</span>,<br>а самый <span style="color: var(--color-accent); font-style: italic;">устойчивый</span>.</h2>
-                    <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 8px;">Устойчивость компании начинается с управляемой деловой культуры.</p>
-                    <p style="font-size: 32px; font-weight: 700; color: var(--color-primary); line-height: 1.2; padding-bottom: 20px; border-bottom: 3px solid var(--color-accent);">Рынок в 2024–2025 стал:</p>
+                <!-- Заголовок -->
+                <h2 style="font-size: 30px; font-weight: 700; color: var(--color-primary); line-height: 1.25; margin-bottom: 28px;">В современном рынке выигрывает не самый <span style="color: #BA4816; font-style: italic;">громкий</span>, а самый <span style="color: #BA4816; font-style: italic;">устойчивый</span>.</h2>
 
-                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px;">
-                        <div style="display: flex; gap: 16px; align-items: flex-start;">
-                            <div style="width: 40px; height: 40px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">1</div>
-                            <div>
-                                <h4 style="font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Более конкурентный</h4>
-                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Клиенты выбирают не только продукт, но и стиль работы.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 16px; align-items: flex-start;">
-                            <div style="width: 40px; height: 40px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">2</div>
-                            <div>
-                                <h4 style="font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Более публичный</h4>
-                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Репутация формируется публично: отзывы, соцсети, профессиональные сообщества.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; gap: 16px; align-items: flex-start;">
-                            <div style="width: 40px; height: 40px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">3</div>
-                            <div>
-                                <h4 style="font-size: 18px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Более чувствительный к доверию</h4>
-                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Долгосрочные деньги приходят туда, где соблюдаются договорённости и границы.</p>
-                            </div>
-                        </div>
+                <!-- Заголовок списка -->
+                <p style="font-size: 17px; font-weight: 700; color: #BA4816; margin-bottom: 20px;">Рынок к 2026–2027 становится:</p>
+
+                <!-- Два столбца: все 6 пунктов -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px 48px; margin-bottom: 32px;">
+                    <div>
+                        <p style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 3px;">1. Более конкурентным</p>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.5;">Компании сравнивают не только по результату, но и по тому, <strong style="color: var(--color-primary);">как выстроена работа: сроки, прозрачность, коммуникация.</strong></p>
+                    </div>
+                    <div>
+                        <p style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 3px;">2. Более публичным и прозрачным</p>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.5;">Репутация формируется открыто: публичные отзывы, соцсети, профессиональные чаты и комьюнити.</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 3px;">3. Более чувствительным к доверию</p>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.5;">Контракты получают те, кому можно доверять — где соблюдают договорённости и границы.</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 3px;">4. Более требовательным к культуре</p>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.5;">Партнёры оценивают не только результат, но и управляемость процессов.</p>
                     </div>
                 </div>
 
-                <!-- Нижняя часть: Выигрывают / Проигрывают -->
+                <!-- Горизонтальный разделитель -->
+                <hr style="border: none; border-top: 1.5px solid rgba(212,131,107,0.35); margin-bottom: 28px;">
+
+                <!-- Блоки: Выигрывают / Проигрывают -->
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
                     <!-- Выигрывают -->
-                    <div style="background: white; border-radius: 20px; padding: 40px; border: 2px solid rgba(111,169,160,0.3); position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--color-teal), #8ec4bb);"></div>
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
-                            <div style="width: 36px; height: 36px; background: var(--color-teal); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">&#9650;</div>
-                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-teal);">Выигрывают</h3>
+                    <div style="background: white; border-radius: 20px; padding: 32px; border: 2px solid rgba(111,169,160,0.3); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, var(--color-teal), #8ec4bb);"></div>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <div style="width: 32px; height: 32px; background: var(--color-teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px;">&#9650;</div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: var(--color-teal);">Выигрывают</h3>
                         </div>
-                        <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px;">Компании, которые:</p>
-                        <div style="display: flex; flex-direction: column; gap: 14px;">
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Контролируют стиль деловой коммуникации</p>
+                        <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 14px;">Компании, которые:</p>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Контролируют стиль деловой коммуникации</p>
                             </div>
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Минимизируют репутационные риски</p>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Минимизируют репутационные риски</p>
                             </div>
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Соблюдают сроки и договорённости</p>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Соблюдают сроки и договорённости</p>
                             </div>
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Формируют предсказуемую среду</p>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: var(--color-teal); border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Формируют предсказуемую среду</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Проигрывают -->
-                    <div style="background: white; border-radius: 20px; padding: 40px; border: 2px solid rgba(212,131,107,0.3); position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 5px; background: linear-gradient(90deg, var(--color-accent), #e09980);"></div>
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
-                            <div style="width: 36px; height: 36px; background: var(--color-accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px;">&#9660;</div>
-                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-accent);">Проигрывают</h3>
+                    <div style="background: white; border-radius: 20px; padding: 32px; border: 2px solid rgba(212,131,107,0.3); position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(90deg, #BA4816, #e09980);"></div>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <div style="width: 32px; height: 32px; background: #BA4816; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px;">&#9660;</div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: #BA4816;">Проигрывают</h3>
                         </div>
-                        <p style="font-size: 14px; color: var(--color-text-secondary); margin-bottom: 20px;">Компании, где:</p>
-                        <div style="display: flex; flex-direction: column; gap: 14px;">
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Коммуникация эмоциональна и хаотична</p>
+                        <p style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 14px;">Компании, где:</p>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: #BA4816; border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Коммуникация эмоциональна и хаотична</p>
                             </div>
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Сотрудники публично конфликтуют</p>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: #BA4816; border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Сотрудники публично конфликтуют</p>
                             </div>
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Игнорируются границы времени</p>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: #BA4816; border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Игнорируются границы времени</p>
                             </div>
-                            <div style="display: flex; gap: 12px; align-items: center;">
-                                <div style="width: 8px; height: 8px; background: var(--color-accent); border-radius: 50%; flex-shrink: 0;"></div>
-                                <p style="font-size: 15px; color: var(--color-primary); font-weight: 500;">Нет единых стандартов общения</p>
+                            <div style="display: flex; gap: 10px; align-items: center;">
+                                <div style="width: 7px; height: 7px; background: #BA4816; border-radius: 50%; flex-shrink: 0;"></div>
+                                <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">Нет единых стандартов общения</p>
                             </div>
                         </div>
                     </div>
@@ -996,51 +1077,47 @@
         </section>
 
         <!-- Section 05: Что такое деловая этика -->
-        <section class="section" id="definition" style="background: var(--color-bg); padding: 80px; position: relative; overflow: hidden;">
-            <div style="position: absolute; bottom: -60px; left: -60px; width: 250px; height: 250px; border-radius: 50%; background: rgba(111,169,160,0.06);"></div>
+        <section class="section" id="definition" style="background: #BA4816; padding: 80px; position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: -60px; left: -60px; width: 250px; height: 250px; border-radius: 50%; background: rgba(255,255,255,0.05);"></div>
 
             <div style="position: relative; z-index: 1;">
-                <div class="section-number" style="color: var(--color-accent);">05</div>
-                <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 48px;">Что такое деловая этика?</h2>
+                <div class="section-number" style="color: rgba(255,255,255,0.4);">05</div>
+                <h2 style="font-size: 42px; font-weight: 700; color: #ffffff; line-height: 1.2; margin-bottom: 48px;">Что такое деловая этика?</h2>
 
                 <div style="display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start;">
                     <!-- Левая часть — определение и пункты -->
                     <div>
                         <!-- Определение -->
-                        <div style="background: var(--color-bg-cream); border-left: 5px solid var(--color-accent); border-radius: 0 16px 16px 0; padding: 32px 36px; margin-bottom: 36px;">
+                        <div style="background: #FFF8F0; border-radius: 16px; padding: 32px 36px; margin-bottom: 36px;">
                             <p style="font-size: 20px; color: var(--color-primary); line-height: 1.6; font-weight: 500;"><strong>Деловая этика</strong> — это система норм и принципов, которая определяет, как люди взаимодействуют в профессиональной среде: с коллегами, клиентами, партнёрами и руководством.</p>
                         </div>
 
-                        <p style="font-size: 17px; color: var(--color-text-secondary); margin-bottom: 28px;">Это не просто «быть вежливым». Это осознанный подход к тому, <strong style="color: var(--color-primary);">как мы общаемся, принимаем решения и выстраиваем рабочие отношения</strong>.</p>
+                        <p style="font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 28px;">Это не просто «быть вежливым». Это осознанный подход к тому, <strong style="color: #ffffff;">как мы общаемся, принимаем решения и выстраиваем рабочие отношения</strong>.</p>
 
                         <!-- Ключевые аспекты -->
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-teal);"></div>
-                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-teal); margin-bottom: 8px;">Уважение</h4>
-                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">К времени, границам и мнению других людей</p>
+                            <div style="background: #FFF8F0; border-radius: 14px; padding: 16px 20px;">
+                                <h4 style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Уважение</h4>
+                                <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.5;">К времени, границам и мнению других людей</p>
                             </div>
-                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-accent);"></div>
-                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-accent); margin-bottom: 8px;">Ответственность</h4>
-                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">За свои слова, решения и их последствия</p>
+                            <div style="background: #FFF8F0; border-radius: 14px; padding: 16px 20px;">
+                                <h4 style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Ответственность</h4>
+                                <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.5;">За свои слова, решения и их последствия</p>
                             </div>
-                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-primary);"></div>
-                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">Честность</h4>
-                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Прозрачность в коммуникации и договорённостях</p>
+                            <div style="background: #FFF8F0; border-radius: 14px; padding: 16px 20px;">
+                                <h4 style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Честность</h4>
+                                <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.5;">Прозрачность в коммуникации и договорённостях</p>
                             </div>
-                            <div style="background: white; border: 1px solid var(--color-border); border-radius: 14px; padding: 24px; position: relative; overflow: hidden;">
-                                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-accent-light);"></div>
-                                <h4 style="font-size: 16px; font-weight: 700; color: var(--color-accent); margin-bottom: 8px;">Профессионализм</h4>
-                                <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Единые стандарты поведения в рабочей среде</p>
+                            <div style="background: #FFF8F0; border-radius: 14px; padding: 16px 20px;">
+                                <h4 style="font-size: 15px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Профессионализм</h4>
+                                <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.5;">Единые стандарты поведения в рабочей среде</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Правая часть — иллюстрация -->
                     <div style="text-align: center;">
-                        <div style="background: var(--color-bg-cream); border-radius: 20px; padding: 24px; overflow: hidden;">
+                        <div style="background: #FFF8F0; border-radius: 20px; padding: 24px; overflow: hidden;">
                             <img src="slides/ethics_illustration_cropped.png" alt="Деловая этика — фундамент корпоративной культуры" style="width: 100%; border-radius: 12px;">
                             <p style="font-size: 14px; font-style: italic; color: var(--color-text-secondary); line-height: 1.5; margin-top: 16px; text-align: center;">Деловая этика — это то, как компания ведёт себя, когда становится сложно.</p>
                         </div>
@@ -1051,7 +1128,6 @@
 
         <!-- Section 06: Как деловая этика влияет на компанию -->
         <section class="section" id="functions" style="background: #EFF3EC; padding: 80px; position: relative; overflow: hidden;">
-            <!-- Декор -->
             <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; border-radius: 50%; background: rgba(76,175,80,0.07);"></div>
             <div style="position: absolute; bottom: -30px; left: 100px; width: 140px; height: 140px; border-radius: 50%; background: rgba(255,202,40,0.1);"></div>
 
@@ -1059,84 +1135,148 @@
                 <div class="section-number" style="color: #5B8C5A;">06</div>
                 <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 48px;">Как деловая этика влияет на компанию</h2>
 
-                <!-- 3 блока -->
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px;">
+                <!-- Верхний ряд: 1 и 2 -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 16px;">
 
                     <!-- 1. Управляемость -->
-                    <div style="background: white; border-radius: 20px; padding: 36px; border-top: 4px solid #5B8C5A; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                            <div style="width: 36px; height: 36px; background: #5B8C5A; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">1</div>
-                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-primary);">Управляемость</h3>
+                    <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid #5B8C5A; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <div style="width: 34px; height: 34px; background: #5B8C5A; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 17px; font-weight: 700;">1</div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: var(--color-primary);">Управляемость</h3>
                         </div>
-                        <p style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px;">Единые стандарты поведения и коммуникации</p>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 14px;">Единые стандарты поведения и коммуникации</p>
+                        <div style="display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px;">
                             <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; меньше конфликтов</p>
                             <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; быстрее принимаются решения</p>
                             <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; ниже управленческая неопределённость</p>
                         </div>
+                        <p style="font-size: 14px; color: #5B8C5A; font-weight: 600; font-style: italic;">Компания становится предсказуемой.</p>
                     </div>
 
                     <!-- 2. Доверие -->
-                    <div style="background: white; border-radius: 20px; padding: 36px; border-top: 4px solid #FFCA28; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                            <div style="width: 36px; height: 36px; background: #FFCA28; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">2</div>
-                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-primary);">Доверие</h3>
+                    <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid #BA4816; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <div style="width: 34px; height: 34px; background: #BA4816; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 17px; font-weight: 700;">2</div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: var(--color-primary);">Доверие</h3>
                         </div>
-                        <p style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px;">Уважительное и предсказуемое взаимодействие</p>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; стабильные партнёрства</p>
-                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; повторные контракты</p>
-                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; инвестиционная привлекательность</p>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 14px;">Уважительное и последовательное взаимодействие</p>
+                        <div style="display: flex; flex-direction: column; gap: 7px; margin-bottom: 14px;">
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; формирует репутацию</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; создаёт долгосрочные отношения</p>
+                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; приводит к повторным контрактам</p>
+                        </div>
+                        <p style="font-size: 14px; color: #BA4816; font-weight: 600; font-style: italic;">Компания становится надёжной.</p>
+                    </div>
+                </div>
+
+                <!-- Стрелки вниз -->
+                <div style="display: flex; justify-content: center; gap: 0; align-items: center; margin-bottom: 8px; position: relative;">
+                    <!-- Левая стрелка от блока 1 -->
+                    <div style="width: calc(25% - 12px); display: flex; justify-content: center;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+                            <div style="width: 2px; height: 24px; background: #5B8C5A;"></div>
+                            <div style="width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 10px solid #5B8C5A;"></div>
                         </div>
                     </div>
-
-                    <!-- 3. Финансовая устойчивость -->
-                    <div style="background: white; border-radius: 20px; padding: 36px; border-top: 4px solid #4A7A48; box-shadow: 0 4px 24px rgba(0,0,0,0.05);">
-                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
-                            <div style="width: 36px; height: 36px; background: #4A7A48; border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">3</div>
-                            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-primary);">Финансовая устойчивость</h3>
-                        </div>
-                        <p style="font-size: 15px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 16px;">Контроль рисков и соблюдение договорённостей</p>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; меньше репутационных потерь</p>
-                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; ниже транзакционные издержки</p>
-                            <p style="font-size: 14px; color: var(--color-primary); font-weight: 500;">&#8594; стабильнее прибыль</p>
+                    <div style="flex: 1;"></div>
+                    <!-- Правая стрелка от блока 2 -->
+                    <div style="width: calc(25% - 12px); display: flex; justify-content: center;">
+                        <div style="display: flex; flex-direction: column; align-items: center; gap: 0;">
+                            <div style="width: 2px; height: 24px; background: #BA4816;"></div>
+                            <div style="width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; border-top: 10px solid #BA4816;"></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Почему это важно сейчас для нас -->
-                <div style="background: white; border-radius: 20px; padding: 40px 44px; box-shadow: 0 4px 24px rgba(0,0,0,0.05); margin-bottom: 24px;">
-                    <h3 style="font-size: 28px; font-weight: 700; color: var(--color-primary); margin-bottom: 28px;">Почему это важно сейчас для нас</h3>
-
-                    <div style="display: flex; flex-direction: column; gap: 0;">
-                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
-                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">1. Мы растём</h4>
-                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Чем больше команда и проектов, тем выше риск размытых стандартов. Этика = единые правила игры.</p>
+                <!-- 3. Финансовая устойчивость — результат (по центру) -->
+                <div style="display: flex; justify-content: center;">
+                    <div style="background: linear-gradient(135deg, #4A7A48, #5B8C5A); border-radius: 20px; padding: 32px 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.1); width: 55%; text-align: left;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                            <div style="width: 34px; height: 34px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-size: 17px; font-weight: 700;">3</div>
+                            <h3 style="font-size: 20px; font-weight: 700; color: white;">Финансовая устойчивость — результат</h3>
                         </div>
-                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
-                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">2. Мы работаем с внешними партнёрами</h4>
-                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Рынок оценивает не только продукт, но и стиль взаимодействия. Один сбой в коммуникации может стоить контракта.</p>
-                        </div>
-                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
-                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">3. Информация стала публичной</h4>
-                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Отзывы, профессиональные сообщества, соцсети — репутация формируется быстро и открыто.</p>
-                        </div>
-                        <div style="padding: 20px 0; border-bottom: 1px solid #E5EDE4;">
-                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">4. Скорость выше, напряжение больше</h4>
-                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">В условиях высокой нагрузки возрастает риск эмоциональных решений и конфликтов. Этика — это стабилизатор.</p>
-                        </div>
-                        <div style="padding: 20px 0;">
-                            <h4 style="font-size: 17px; font-weight: 700; color: var(--color-primary); margin-bottom: 8px;">5. Устойчивость важнее «героизма»</h4>
-                            <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">Системность выигрывает у разовых усилий. Нам важна предсказуемость, а не случайные успехи.</p>
+                        <p style="font-size: 14px; color: rgba(255,255,255,0.8); margin-bottom: 14px;">Когда есть управляемость + доверие, появляется:</p>
+                        <div style="display: flex; flex-direction: column; gap: 7px;">
+                            <p style="font-size: 14px; color: white; font-weight: 500;">&#8594; стабильный поток контрактов</p>
+                            <p style="font-size: 14px; color: white; font-weight: 500;">&#8594; меньше репутационных и операционных потерь</p>
+                            <p style="font-size: 14px; color: white; font-weight: 500;">&#8594; предсказуемая прибыль</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Финальная строка -->
-                <div style="background: linear-gradient(135deg, #4A7A48, #5B8C5A); border-radius: 16px; padding: 32px 40px; display: flex; align-items: center; gap: 20px;">
-                    <div style="width: 5px; height: 48px; background: #FFCA28; border-radius: 3px; flex-shrink: 0;"></div>
-                    <p style="font-size: 19px; color: white; line-height: 1.5; font-weight: 500;">Деловая этика — это управляемость поведения, которая напрямую влияет на устойчивость бизнеса.</p>
+        <!-- Section 07: Почему это важно сейчас для нас -->
+        <section class="section" id="why-now" style="background: #EFF3EC; padding: 64px 80px; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -50px; right: -50px; width: 200px; height: 200px; border-radius: 50%; background: rgba(76,175,80,0.07);"></div>
+
+            <div style="position: relative; z-index: 1;">
+                <div class="section-number" style="color: #5B8C5A;">07</div>
+                <h2 style="font-size: 36px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 32px;">Почему это важно сейчас для нас</h2>
+
+                <!-- 5 плашек: 3 сверху + 2 снизу по центру -->
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 16px;">
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                        <div style="height: 160px; overflow: hidden;">
+                            <img src="slides/why_we_grow.jpg" alt="Мы растём" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                        </div>
+                        <div style="padding: 20px; border-left: 4px solid #5B8C5A;">
+                            <h4 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Мы растём</h4>
+                            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.6;">Чем больше команда и проектов, тем выше риск размытых стандартов. Этика = единые правила игры.</p>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                        <div style="height: 160px; overflow: hidden;">
+                            <img src="slides/why_partners.png" alt="Мы работаем с внешними партнёрами" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                        </div>
+                        <div style="padding: 20px; border-left: 4px solid #5B8C5A;">
+                            <h4 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Мы работаем с внешними партнёрами</h4>
+                            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.6;">Рынок оценивает не только продукт, но и стиль взаимодействия. Один сбой может стоить контракта.</p>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                        <div style="height: 160px; overflow: hidden;">
+                            <img src="slides/why_public.png" alt="Информация стала публичной" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                        </div>
+                        <div style="padding: 20px; border-left: 4px solid #5B8C5A;">
+                            <h4 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Информация стала публичной</h4>
+                            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.6;">Отзывы, профессиональные сообщества, соцсети — репутация формируется быстро и открыто.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 66%; margin: 0 auto;">
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                        <div style="height: 140px; overflow: hidden;">
+                            <img src="slides/why_speed.png" alt="Скорость выше, напряжение больше" style="width: 100%; height: 100%; object-fit: cover; object-position: center 30%;">
+                        </div>
+                        <div style="padding: 20px; border-left: 4px solid #BA4816;">
+                            <h4 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Скорость выше, напряжение больше</h4>
+                            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.6;">В условиях высокой нагрузки растёт риск эмоциональных решений. Этика — стабилизатор.</p>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.05);">
+                        <div style="height: 140px; background: #F5EAE4; display: flex; align-items: center; justify-content: center;">
+                            <span style="font-size: 13px; color: #c4907a;">фото</span>
+                        </div>
+                        <div style="padding: 20px; border-left: 4px solid #BA4816;">
+                            <h4 style="font-size: 16px; font-weight: 700; color: var(--color-primary); margin-bottom: 6px;">Устойчивость важнее «героизма»</h4>
+                            <p style="font-size: 13px; color: var(--color-text-secondary); line-height: 1.6;">Системность выигрывает у разовых усилий. Нам важна предсказуемость, а не случайные успехи.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 08: Ключевая фраза -->
+        <section class="section" id="ethics-core" style="background: linear-gradient(135deg, #4A7A48, #5B8C5A); padding: 80px; min-height: 60vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.05);"></div>
+            <div style="position: absolute; bottom: -60px; left: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.04);"></div>
+
+            <div style="position: relative; z-index: 1; text-align: center; max-width: 800px;">
+                <div class="section-number" style="color: rgba(255,255,255,0.3);">08</div>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 24px;">
+                    <div style="width: 5px; height: 64px; background: #FFCA28; border-radius: 3px; flex-shrink: 0;"></div>
+                    <p style="font-size: 32px; color: white; line-height: 1.4; font-weight: 600; text-align: left;">Деловая этика — это управляемость поведения, которая напрямую влияет на устойчивость бизнеса.</p>
                 </div>
             </div>
         </section>
@@ -1146,7 +1286,7 @@
             <div style="position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; border-radius: 50%; background: rgba(192,57,43,0.05);"></div>
 
             <div style="position: relative; z-index: 1;">
-                <div class="section-number" style="color: #C0392B;">07</div>
+                <div class="section-number" style="color: #C0392B;">09</div>
                 <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 16px;">Скрытая угроза: автоматические реакции</h2>
                 <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 48px;">Мы часто не замечаем, как именно общаемся в рабочих ситуациях. В состоянии стресса, спешки или напряжения значительная часть наших реакций становится автоматической.</p>
 
@@ -1157,60 +1297,90 @@
                     <p style="font-size: 16px; color: var(--color-primary); font-weight: 600;">Это происходит не из злого умысла, а по инерции.</p>
                 </div>
 
-                <!-- Ключевой момент -->
-                <div style="background: var(--color-primary); border-radius: 16px; padding: 32px 40px; display: flex; align-items: center; gap: 20px;">
-                    <div style="width: 5px; height: 48px; background: #C0392B; border-radius: 3px; flex-shrink: 0;"></div>
-                    <div>
-                        <p style="font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Ключевой момент</p>
-                        <p style="font-size: 19px; color: white; line-height: 1.5; font-weight: 500;">Деловая этика начинается с осознанности. Способность замечать свои реакции и управлять ими — часть профессиональной зрелости.</p>
-                    </div>
+            </div>
+        </section>
+
+        <!-- Section 09b: Осознанность -->
+        <section class="section" id="awareness" style="background: var(--color-primary); padding: 80px; min-height: 60vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -80px; right: -80px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04);"></div>
+            <div style="position: absolute; bottom: -60px; left: -60px; width: 220px; height: 220px; border-radius: 50%; background: rgba(255,255,255,0.03);"></div>
+            <div style="position: relative; z-index: 1; max-width: 800px;">
+                <div style="display: flex; align-items: center; gap: 24px;">
+                    <div style="width: 5px; height: 64px; background: #C0392B; border-radius: 3px; flex-shrink: 0;"></div>
+                    <p style="font-size: 32px; color: white; line-height: 1.4; font-weight: 600;">Деловая этика начинается с осознанности. Способность замечать свои реакции и управлять ими — часть профессиональной зрелости.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 08: Мой опыт -->
-        <section class="section section-cream" id="experience" style="padding: 80px;">
-            <div class="section-number" style="color: var(--color-accent);">08</div>
-            <h2 style="font-size: 42px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 48px;">Мой опыт: как это проявляется в реальности</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
-                <!-- 1. Эмоции в офисе -->
-                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid var(--color-accent); box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
-                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">1. Эмоции в офисе</h4>
-                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Сотрудник громко ругается на клиента, пока рядом идёт созвон с этим же заказчиком.</p>
-                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Риск потери доверия и репутации.</p>
-                    <p style="font-size: 13px; color: var(--color-accent); font-weight: 600;">Принцип: контроль эмоций в профессиональной среде.</p>
+        <!-- Section 10a: Кейс 1 -->
+        <section class="section section-cream" id="case1" style="padding: 80px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+            <div class="section-number" style="color: var(--color-accent);">10</div>
+            <p style="font-size: 15px; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Мой опыт · кейс 1 из 4</p>
+            <h2 style="font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 40px;">Эмоции в офисе</h2>
+            <div style="max-width: 780px; display: flex; flex-direction: column; gap: 20px;">
+                <div style="background: white; border-radius: 20px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7;">Сотрудник громко ругается на клиента, пока рядом идёт созвон с этим же заказчиком.</p>
                 </div>
-
-                <!-- 2. Подрядчик на встрече -->
-                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid var(--color-teal); box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
-                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">2. Подрядчик на встрече</h4>
-                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Опоздание, неготовность, хаотичная подача, неформальный тон.</p>
-                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Снижение доверия к человеку и компании.</p>
-                    <p style="font-size: 13px; color: var(--color-teal); font-weight: 600;">Принцип: подготовка и уважение к формату встречи.</p>
+                <div style="background: white; border-radius: 20px; padding: 28px 36px; border-left: 5px solid var(--color-accent); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 16px; color: var(--color-primary); font-weight: 600;">&#8594; Риск потери доверия и репутации.</p>
                 </div>
-
-                <!-- 3. Сильный кандидат -->
-                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid var(--color-primary); box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
-                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">3. Сильный кандидат — слабая подача</h4>
-                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Резюме сильное, самопрезентация неструктурированная.</p>
-                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Потеря впечатления и ценности экспертизы.</p>
-                    <p style="font-size: 13px; color: var(--color-primary); font-weight: 600;">Принцип: профессиональная коммуникация — часть компетенции.</p>
-                </div>
-
-                <!-- 4. Собеседование из кафе -->
-                <div style="background: white; border-radius: 20px; padding: 32px; border-top: 4px solid #C0392B; box-shadow: 0 4px 20px rgba(0,0,0,0.04);">
-                    <h4 style="font-size: 19px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">4. Собеседование из кафе</h4>
-                    <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.7; margin-bottom: 10px;">Шум, плохая связь, отсутствие подготовки.</p>
-                    <p style="font-size: 14px; color: var(--color-primary); margin-bottom: 10px;">&#8594; Снижение доверия и серьёзности намерений.</p>
-                    <p style="font-size: 13px; color: #C0392B; font-weight: 600;">Принцип: уважение к формату онлайн-коммуникации.</p>
+                <div style="background: var(--color-accent); border-radius: 20px; padding: 28px 36px;">
+                    <p style="font-size: 15px; color: white; font-weight: 600;">Принцип: контроль эмоций в профессиональной среде.</p>
                 </div>
             </div>
+        </section>
 
-            <!-- Закрывающая мысль -->
-            <div style="background: var(--color-primary); border-radius: 16px; padding: 32px 40px; display: flex; align-items: center; gap: 20px;">
-                <div style="width: 5px; height: 48px; background: var(--color-accent); border-radius: 3px; flex-shrink: 0;"></div>
-                <p style="font-size: 19px; color: white; line-height: 1.5; font-weight: 500;">Во всех случаях проблема была не в знаниях, а в качестве деловой коммуникации.</p>
+        <!-- Section 10b: Кейс 2 -->
+        <section class="section section-cream" id="case2" style="padding: 80px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+            <div class="section-number" style="color: var(--color-teal);">10</div>
+            <p style="font-size: 15px; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Мой опыт · кейс 2 из 4</p>
+            <h2 style="font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 40px;">Подрядчик на встрече</h2>
+            <div style="max-width: 780px; display: flex; flex-direction: column; gap: 20px;">
+                <div style="background: white; border-radius: 20px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7;">Опоздание, неготовность, хаотичная подача, неформальный тон.</p>
+                </div>
+                <div style="background: white; border-radius: 20px; padding: 28px 36px; border-left: 5px solid var(--color-teal); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 16px; color: var(--color-primary); font-weight: 600;">&#8594; Снижение доверия к человеку и компании.</p>
+                </div>
+                <div style="background: var(--color-teal); border-radius: 20px; padding: 28px 36px;">
+                    <p style="font-size: 15px; color: white; font-weight: 600;">Принцип: подготовка и уважение к формату встречи.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10c: Кейс 3 -->
+        <section class="section section-cream" id="case3" style="padding: 80px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+            <div class="section-number" style="color: var(--color-primary);">10</div>
+            <p style="font-size: 15px; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Мой опыт · кейс 3 из 4</p>
+            <h2 style="font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 40px;">Подключаемся к встрече из машины/кафе</h2>
+            <div style="max-width: 780px; display: flex; flex-direction: column; gap: 20px;">
+                <div style="background: white; border-radius: 20px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7;">Шум, плохая связь, отсутствие подготовки.</p>
+                </div>
+                <div style="background: white; border-radius: 20px; padding: 28px 36px; border-left: 5px solid var(--color-primary); box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 16px; color: var(--color-primary); font-weight: 600;">&#8594; Снижение доверия и серьёзности намерений.</p>
+                </div>
+                <div style="background: var(--color-primary); border-radius: 20px; padding: 28px 36px;">
+                    <p style="font-size: 15px; color: white; font-weight: 600;">Принцип: уважение к формату онлайн-коммуникации.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10d: Кейс 4 -->
+        <section class="section section-cream" id="case4" style="padding: 80px; min-height: 80vh; display: flex; flex-direction: column; justify-content: center;">
+            <div class="section-number" style="color: #C0392B;">10</div>
+            <p style="font-size: 15px; font-weight: 600; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px;">Мой опыт · кейс 4 из 4</p>
+            <h2 style="font-size: 38px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 40px;">Встреча без уведомления</h2>
+            <div style="max-width: 780px; display: flex; flex-direction: column; gap: 20px;">
+                <div style="background: white; border-radius: 20px; padding: 36px; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 17px; color: var(--color-text-secondary); line-height: 1.7;">Назначили встречу сотруднику в 8 утра (вне рабочего времени) на 10:00 и не написали ему об этом. В 10:00, когда он не подключился, спросили в чате, почему не пришёл.</p>
+                </div>
+                <div style="background: white; border-radius: 20px; padding: 28px 36px; border-left: 5px solid #C0392B; box-shadow: 0 4px 20px rgba(0,0,0,0.05);">
+                    <p style="font-size: 16px; color: var(--color-primary); font-weight: 600;">&#8594; Напряжение, ощущение неуважения, сбой в работе.</p>
+                </div>
+                <div style="background: #C0392B; border-radius: 20px; padding: 28px 36px;">
+                    <p style="font-size: 15px; color: white; font-weight: 600;">Принцип: необходимо сообщать лично обо всех встречах и ставить в календарь.</p>
+                </div>
             </div>
         </section>
         <!-- Section 09: Как это менять -->
@@ -1221,7 +1391,7 @@
             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(212,131,107,0.06), transparent 70%);"></div>
 
             <div style="position: relative; z-index: 1;">
-                <div class="section-number" style="color: #FFCA28;">09</div>
+                <div class="section-number" style="color: #FFCA28;">11</div>
                 <h2 style="font-size: 48px; font-weight: 700; color: white; line-height: 1.1; margin-bottom: 48px;">Как это менять</h2>
 
                 <!-- Основной принцип -->
@@ -1303,7 +1473,7 @@
             <div style="position: absolute; bottom: -40px; left: -40px; width: 200px; height: 200px; border-radius: 50%; background: rgba(212,131,107,0.06);"></div>
 
             <div style="position: relative; z-index: 1;">
-                <div class="section-number" style="color: var(--color-accent);">10</div>
+                <div class="section-number" style="color: var(--color-accent);">12</div>
                 <h2 style="font-size: 44px; font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 12px;">Памятка: общие правила деловой этики</h2>
                 <p style="font-size: 17px; color: var(--color-text-secondary); margin-bottom: 48px;">Простые принципы, которые формируют культуру взаимодействия каждый день</p>
 
